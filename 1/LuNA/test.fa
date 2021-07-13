@@ -1,0 +1,6 @@
+import c_print() as print;
+
+sub main()
+{
+	print();
+}

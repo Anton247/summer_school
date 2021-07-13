@@ -1,0 +1,47 @@
+import c_init(int, name) as init;
+
+import c_initVA(name, int, int) as initVA;
+import c_initVB(name, int, int) as initVB;
+
+
+import partialSum(value, value, name, int) as partialSum;
+
+import c_vprint(value, int) as vprint;
+//количество фрагментов
+#define FG_SIZE 4 
+//длинна фрагмента
+#define FG_LENGTH 4
+
+sub main()
+{
+	df A, B, C, length, size, x;
+	
+	init($FG_LENGTH, length);
+	init($FG_SIZE, size);
+
+	initVA(A[0], length, 0) >> (x[0]);
+	for n=1..size-1
+	{
+		if (x[n - 1])
+			initVA(A[n], length, n) >> (x[n]);
+	}
+
+	initVB(B[0], length, 0) >> (x[0][1]);
+	for n=1..size-1
+	{
+		if (x[n - 1][1])
+			initVB(B[n], length, n) >> (x[n][1]);
+	}
+
+	for k=0..size-1
+	{
+		partialSum(A[k], B[k], C[k], length);
+	}
+
+	vprint(C[0], length) >> (x[0][1][1]);
+	for n=1..size-1
+	{
+		if (x[n - 1][1][1])
+		vprint(C[n], length) >> (x[n][1][1]);
+	}
+}
