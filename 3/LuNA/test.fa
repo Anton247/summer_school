@@ -1,0 +1,22 @@
+import c_init(int, name) as init;
+import c_iprint(int) as iprint;
+/*
+sub main()
+{
+	df x;
+	init(7, x[4]);
+	iprint(x[2+2]);
+}
+*/
+
+import c_init(int, name) as init;
+import c_iprint(int) as iprint;
+
+sub main()
+{
+	df x;
+	init(7, x[4]);
+	iprint(x[2+2]);
+	init(8, x[7]);
+	iprint(x[x[2+2]]);
+}
