@@ -1,6 +1,6 @@
 #include <iostream>
 #include <mpi.h>
-//#include<LuNA> //это тест 
+#include "/home/anton/Документы/GitHub/summer_school/FragmentLibrary/DF.h"
 using namespace std;
  
 void c_print(){
