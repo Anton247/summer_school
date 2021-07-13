@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<iostream>
-#include"/home/anton/Документы/GitHub/summer_school/FragmentLibrary/DF.h"
+#include"DF.h"
 
 using namespace std;
 
@@ -20,15 +20,15 @@ int main(int argc, char** argv) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &commSize);
     MPI_Status status;
-    int num;
     if (!rank) {
         DF x;
         c_init(7, x);
         assert(x.get_type() == TYPE_INT);
-        num = x.getValue<int>();
-        MPI_Send(&num, 1, MPI_INT, commSize - 1, 0, MPI_COMM_WORLD);
+        int* a = x.getBuffer<int>(); //сторонняя функция в DF.h
+        MPI_Send(a, 1, MPI_INT, commSize - 1, 0, MPI_COMM_WORLD);
     }
     if (rank == commSize - 1) {
+        int num;
         MPI_Recv(&num, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
         c_print(num);
     }

@@ -19,18 +19,18 @@ sub main()
 	init($FG_LENGTH, length);
 	init($FG_SIZE, size);
 
-	initVA(A[0], length, 0) >> (x[0]);
-	for n=1..size-1
+	//нужно жестко определить, что данный участок
+	//кода должен выполнять один процесс (чиение файла)
+	//хотя... с чтением проблем не должно быть
+	
+	for n=0..size-1
 	{
-		if (x[n - 1])
-			initVA(A[n], length, n) >> (x[n]);
+		initVA(A[n], length, n);
 	}
 
-	initVB(B[0], length, 0) >> (x[0][1]);
-	for n=1..size-1
+	for n=0..size-1
 	{
-		if (x[n - 1][1])
-			initVB(B[n], length, n) >> (x[n][1]);
+		initVB(B[n], length, n);
 	}
 
 	for k=0..size-1
