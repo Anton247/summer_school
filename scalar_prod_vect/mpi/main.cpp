@@ -56,10 +56,10 @@ void c_init(int val, OutputDF &df)
         double* a = A.getData<double>();
         fflush(stdout);
         double* b = A.getData<double>();
-        double s=0;
+        double* s = S.create<double>(length);
+        
         for(int i=0; i<length; i++)
-            s+= a[i] * b[i];
-        S.setValue<double>(s);
+            s[i] = a[i] + b[i];
     }
 
 int main(int argc, char **argv) {
@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
         //в принципе достаточно просто выяснить, что у нас повторение
         //size операций
         if(commSize > size)
-
+            
     }
     initVA(A0, length, 0);
     initVB(B0, length, 0);
@@ -95,7 +95,8 @@ int main(int argc, char **argv) {
     initVA(A0, length, 2);
     initVB(B0, length, 2);
     partialSum(A[2], B[2], C[2], length);
-    
+
+
 
     if(commSize>=2){ //для больше 2-х процессов
         if(rank == 0){
