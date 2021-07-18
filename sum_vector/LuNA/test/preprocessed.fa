@@ -8,17 +8,17 @@ import partialSum(value, value, name, int) as partialSum;
 
 import c_vprint(value, int) as vprint;
 import c_print(value) as print;
-//количество фрагментов
-#define FG_SIZE 4 
-//длинна фрагмента
-#define FG_LENGTH 4
+
+
+
+
 
 sub main()
 {
 	df A, B, C, length, size, x;
 	
-	init($FG_LENGTH, length);
-	init($FG_SIZE, size);
+	init(4, length);
+	init(4 , size);
 	for n=0..size-1
 	{
 		initVA(A[n], length, n);

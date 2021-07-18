@@ -1,72 +1,50 @@
 #include <iostream>
 #include <mpi.h>
 #include<LuNA>
-#include <map>
+#include <vector>
 using namespace std;
  
-void c_print(int n){
-	cout<<n;
-}
-void c_init(int val, OutputDF &df) {
-	df.setValue(val);
-}
+void c_init(int, OutputDF &);
+void c_dinit(double, OutputDF &);
 
-void c_init(int val, OutputDF &df) 
-    {
-        df.setValue<int>(val);
-        //printf("c_init: %d --> %s, size: %d\n", val, df.getName().c_str(), (int)df.getSize());
-    }
-
-    void c_initVA(OutputDF &dfo, int l, int k) 
-    {
-        //int* length = l.getData<int>();
-        int length = l;
-        std::ifstream in("VA.txt"); // окрываем файл для чтения 
-        assert(in.is_open());  
-        double *A = dfo.create<double>(length);
-        double a;
-        for(int i=0; i<length*k; i++)
-           in>>a;
-        for(int i=0; i<length; i++)
-           in>>A[i];
-
-    }
-    void c_initVB(OutputDF &dfo, int l, int k) 
-    {
-        int length = l;
-        std::ifstream in("VB.txt"); // окрываем файл для чтения 
-        assert(in.is_open());  
-        double *A = dfo.create<double>(length);
-        double a;
-        for(int i=0; i<length*k; i++)
-           in>>a;
-        for(int i=0; i<length; i++)
-           in>>A[i];
-    }
-
-    void c_vprint(InputDF &c, int n){
-        double* C = c.getData<double>();
-        for(int i=0; i<n; i++){
-            printf("%lf\n", C[i]);
-        }
-		
-	}
-
-    void partialSum(InputDF &A, InputDF &B, OutputDF &S, int length){
-        double* a = A.getData<double>();
-        fflush(stdout);
-        double* b = A.getData<double>();
-        double* s = S.create<double>(length);
-        
-        for(int i=0; i<length; i++)
-            s[i] = a[i] + b[i];
-    }
-
+void c_initVA(OutputDF &, int, int);
+void c_initVB(OutputDF &, int, int);
+void c_dprint(InputDF &);
+void partialSum(InputDF &, InputDF &, OutputDF &, int);
+void c_sum(InputDF &, InputDF &, OutputDF &);
 int main(int argc, char **argv) {
     int rank, commSize;
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &commSize);
+    
+    DF length;
+    c_init(4, length);
+    DF size;
+	init(4, size); 
+    
+    for(i=0; i<size; i++)    
+    DF A_0;
+    initVA(A_0, length, 0);
+    DF B_0;
+	initVB(B_0, length, 0);
+    DF C_0;
+	partialSum(A_0, B_0, C_0, length);
+
+    DF A_1;
+    initVA(A_1, length, 1);
+    DF B_0;
+	initVB(B_1, length, 1);
+    DF C_0;
+	partialSum(A_1, B_1, C_1, length);
+
+    ...
+
+    vprint(C_0, length);
+
+
+
+
     //что вместо DF можно применить обычный тип (int)
     
     DF length;

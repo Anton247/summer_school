@@ -1,0 +1,114 @@
+{
+    "0": {
+        "pos": 258,
+        "comment": "initial launcher: sub main()"
+    },
+    "1": {
+        "pos": 258,
+        "comment": "sub main"
+    },
+    "2": {
+        "pos": 304,
+        "comment": "entry (migrate) cf _l20: init(4, length);"
+    },
+    "3": {
+        "pos": 322,
+        "comment": "entry (migrate) cf _l21: init(4, size);"
+    },
+    "4": {
+        "pos": 339,
+        "comment": "entry (migrate) for n=0..(size)-(1);"
+    },
+    "5": {
+        "pos": 339,
+        "comment": "request size"
+    },
+    "6": {
+        "pos": 356,
+        "comment": "body fork: for n = 0 .. (size)-(1)"
+    },
+    "7": {
+        "pos": 360,
+        "comment": "entry (migrate) cf _l24: initVA(A[n], length, n);"
+    },
+    "8": {
+        "pos": 360,
+        "comment": "request length"
+    },
+    "9": {
+        "pos": 360,
+        "comment": "execute cf _l24: initVA(A[n], length, n);"
+    },
+    "10": {
+        "pos": 387,
+        "comment": "entry (migrate) cf _l25: initVB(B[n], length, n);"
+    },
+    "11": {
+        "pos": 387,
+        "comment": "request length"
+    },
+    "12": {
+        "pos": 387,
+        "comment": "execute cf _l25: initVB(B[n], length, n);"
+    },
+    "13": {
+        "pos": 414,
+        "comment": "entry (migrate) cf _l26: partialSum(A[n], B[n], C[n], length);"
+    },
+    "14": {
+        "pos": 414,
+        "comment": "request B[n], length, A[n]"
+    },
+    "15": {
+        "pos": 414,
+        "comment": "execute cf _l26: partialSum(A[n], B[n], C[n], length);"
+    },
+    "16": {
+        "pos": 457,
+        "comment": "entry (migrate) cf _l29: vprint(C[0], length);"
+    },
+    "17": {
+        "pos": 457,
+        "comment": "request length, C[0]"
+    },
+    "18": {
+        "pos": 457,
+        "comment": "execute cf _l29: vprint(C[0], length);"
+    },
+    "19": {
+        "pos": 496,
+        "comment": "entry (migrate) for n=1..(size)-(1);"
+    },
+    "20": {
+        "pos": 496,
+        "comment": "request size"
+    },
+    "21": {
+        "pos": 513,
+        "comment": "body fork: for n = 1 .. (size)-(1)"
+    },
+    "22": {
+        "pos": 517,
+        "comment": "migrate: if x[(n)-(1)][1][1]"
+    },
+    "23": {
+        "pos": 517,
+        "comment": "request x[(n)-(1)][1][1]"
+    },
+    "24": {
+        "pos": 536,
+        "comment": "body fork: if x[(n)-(1)][1][1]"
+    },
+    "25": {
+        "pos": 539,
+        "comment": "entry (migrate) cf _l33: vprint(C[n], length);"
+    },
+    "26": {
+        "pos": 539,
+        "comment": "request C[n], length"
+    },
+    "27": {
+        "pos": 539,
+        "comment": "execute cf _l33: vprint(C[n], length);"
+    }
+}

@@ -39,14 +39,20 @@ extern "C"
            in>>A[i];
     }
 
-
-
     void c_vprint(InputDF &c, int n){
         double* C = c.getData<double>();
         for(int i=0; i<n; i++){
             printf("%lf\n", C[i]);
         }
 		
+	}
+
+    void c_print(InputDF &c){
+        printf("number\n");
+        fflush(stdout);
+        int C = c.getValue<int>();
+        printf("number %d\n", C);
+        fflush(stdout);
 	}
 
     void partialSum(InputDF &A, InputDF &B, OutputDF &S, int length){
